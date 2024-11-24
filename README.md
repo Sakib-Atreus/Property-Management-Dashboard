@@ -53,14 +53,17 @@ cd property-management-dashboard
 ### **2. Install Dependencies**
 ```bash
 npm install
+```
 
-### **2. Start the Development Server**
+### **3. Start the Development Server**
 ```bash
-npm start
+npm run dev
+```
 
 After the server starts, you can view the app in your browser at:
 ```bash
 http://localhost:5173/
+```
 
 
 ## **Contact**
