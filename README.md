@@ -49,6 +49,7 @@ Ensure you have the following installed:
 ````bash
 git clone https://github.com/Sakib-Atreus/Property-Management-Dashboard
 cd property-management-dashboard
+````
 
 ### **2. Install Dependencies**
 ```bash
