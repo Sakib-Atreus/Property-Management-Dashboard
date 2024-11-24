@@ -75,4 +75,3 @@ For support or inquiries, reach out
 ---
 
 By following these steps, you can set up and run the Property Management Dashboard website locally on your machine.
-````
