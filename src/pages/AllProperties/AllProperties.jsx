@@ -8,6 +8,7 @@ const AllProperties = () => {
   const [isViewModalOpen, setIsViewModalOpen] = useState(false); 
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false); 
   const [propertyToDelete, setPropertyToDelete] = useState(null);
+  const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false); // State for success modal visibility
 
   // Fetch properties from localStorage when the component mounts
   useEffect(() => {
@@ -40,6 +41,9 @@ const AllProperties = () => {
     // Update localStorage with the updated list
     localStorage.setItem('properties', JSON.stringify(updatedProperties));
     setIsDeleteModalOpen(false); // Close the delete modal
+
+    // Open success modal
+    setIsSuccessModalOpen(true);
   };
 
   // Open delete confirmation modal
@@ -54,10 +58,15 @@ const AllProperties = () => {
     setIsViewModalOpen(true); // Open the modal
   };
 
-  // Close modal
+  // Close view modal
   const handleCloseViewModal = () => {
     setIsViewModalOpen(false);
     setSelectedProperty(null);
+  };
+
+  // Close success modal
+  const handleCloseSuccessModal = () => {
+    setIsSuccessModalOpen(false);
   };
 
   return (
@@ -186,6 +195,42 @@ const AllProperties = () => {
                 Confirm
               </button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Success Modal */}
+      {isSuccessModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg w-96 text-center">
+            <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">
+              Success!
+            </h2>
+            <div className="flex justify-center items-center mb-4">
+              <svg
+                className="w-12 h-12 text-green-500 animate-bounce"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+            </div>
+            <p className="text-gray-700 dark:text-gray-300">
+              The property has been deleted successfully.
+            </p>
+            <button
+              onClick={handleCloseSuccessModal}
+              className="mt-4 bg-black text-green-500 py-2 px-4 rounded hover:text-green-600"
+            >
+              Close
+            </button>
           </div>
         </div>
       )}
